@@ -134,7 +134,7 @@ function create_anime(table) {
         text-align: left;
     }`
     text += "\n    " + `.score, .type, .progress {
-        text-align: right;
+        text-align: center;
         width: 5%;
     }`
     text += "\n    " + `.center-item {
@@ -267,7 +267,7 @@ function create_manga(table) {
         text-align: left;
     }`
     text += "\n    " + `.score, .type, .progress {
-        text-align: right;
+        text-align: center;
         width: 5%;
     }`
     text += "\n    " + `.center-item {
