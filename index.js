@@ -2,9 +2,9 @@ const fs = require("fs")
 const path = require("path")
 const xml2js = require("xml2js")
 
-function zero_or_not(num) {
+function zero_or_not(num, rep) {
     ret = num
-    if (ret == 0) { ret = "-" }
+    if (ret == 0) { ret = rep }
     return ret
 }
 
@@ -207,13 +207,13 @@ function create_anime(table) {
         text += "\n                " + `<td class="status ${card}"></td>`
         text += "\n                " + `<td class="center-item second-item">${i + 1}</td>`
         text += "\n                " + `<td class="bold-item"><a href="https://myanimelist.net/anime/${item["series_animedb_id"]}">${item["series_title"]}</a></td>`
-        text += "\n                " + `<td class="center-item second-item">${item["my_score"]}</td>`
+        text += "\n                " + `<td class="center-item second-item">${zero_or_not(item["my_score"], "~")}</td>`
         text += "\n                " + `<td class="center-item second-item">${item["series_type"]}</td>`
 
         if (item["series_episodes"] == 0) {
-            text += "\n                " + `<td class="center-item second-item"><span style="color: #8ec6f7;">${zero_or_not(item["my_watched_episodes"])}</span></td>`
+            text += "\n                " + `<td class="center-item second-item"><span style="color: #8ec6f7;">${zero_or_not(item["my_watched_episodes"], "-")}</span></td>`
         } else {
-            text += "\n                " + `<td class="center-item second-item"><span style="color: #8ec6f7;">${zero_or_not(item["my_watched_episodes"])}</span> / ${item["series_episodes"]}</td>`
+            text += "\n                " + `<td class="center-item second-item"><span style="color: #8ec6f7;">${zero_or_not(item["my_watched_episodes"], "-")}</span> / ${item["series_episodes"]}</td>`
         }
 
         text += "\n            " + `</tr>`
@@ -340,9 +340,9 @@ function create_manga(table) {
         text += "\n                " + `<td class="status ${card}"></td>`
         text += "\n                " + `<td class="center-item second-item">${i + 1}</td>`
         text += "\n                " + `<td class="bold-item"><a href="https://myanimelist.net/manga/${item["manga_mangadb_id"]}">${item["manga_title"]}</a></td>`
-        text += "\n                " + `<td class="center-item second-item">${item["my_score"]}</td>`
-        text += "\n                " + `<td class="center-item second-item"><span style="color: #8ec6f7;">${zero_or_not(item["my_read_chapters"])}</span> / ${zero_or_not(item["manga_chapters"])}</td>`
-        text += "\n                " + `<td class="center-item second-item"><span style="color: #8ec6f7;">${zero_or_not(item["my_read_volumes"])}</span> / ${zero_or_not(item["manga_volumes"])}</td>`
+        text += "\n                " + `<td class="center-item second-item">${zero_or_not(item["my_score"], "~")}</td>`
+        text += "\n                " + `<td class="center-item second-item"><span style="color: #8ec6f7;">${zero_or_not(item["my_read_chapters"], "-")}</span> / ${zero_or_not(item["manga_chapters"], "-")}</td>`
+        text += "\n                " + `<td class="center-item second-item"><span style="color: #8ec6f7;">${zero_or_not(item["my_read_volumes"], "-")}</span> / ${zero_or_not(item["manga_volumes"], "-")}</td>`
         text += "\n            " + `</tr>`
     }
 
