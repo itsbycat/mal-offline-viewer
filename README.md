@@ -1,3 +1,5 @@
+![manga list](https://i.imgur.com/sllP7po.png)
+
 ## Usage
 1. first start you need to install depencies `npm install`
 2. drop manga or anime list (what ever) exported by myanimelist.net .xml files to scan/
